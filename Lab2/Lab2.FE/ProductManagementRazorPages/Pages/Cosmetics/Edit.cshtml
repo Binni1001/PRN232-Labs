@@ -1,0 +1,51 @@
+﻿@page "{id}"
+@model ProductManagementRazorPages.Pages.Cosmetics.EditModel
+
+<h2>Edit Cosmetic</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Cosmetic.CosmeticId" />
+
+    <div class="mb-3">
+        <label>Name</label>
+        <input asp-for="Cosmetic.CosmeticName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Skin Type</label>
+        <input asp-for="Cosmetic.SkinType" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Expiration Date</label>
+        <input asp-for="Cosmetic.ExpirationDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Size</label>
+        <input asp-for="Cosmetic.CosmeticSize" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input asp-for="Cosmetic.DollarPrice" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Category</label>
+        <select asp-for="Cosmetic.CategoryId" class="form-control">
+            @foreach (var cate in Model.Categories)
+            {
+                <option value="@cate.CategoryId">@cate.CategoryName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Back</a>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p class="text-danger mt-3">@Model.ErrorMessage</p>
+}
